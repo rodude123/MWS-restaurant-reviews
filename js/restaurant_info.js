@@ -1,6 +1,5 @@
 let restaurant;
 var map;
-
 /**
  * Initialize Google map, called from HTML.
  */
@@ -9,7 +8,9 @@ window.initMap = () => {
     if (error) { // Got an error!
       console.error(error);
     } else {
+      let isDraggable = $(document).width() > 1100 ? true : false;
       self.map = new google.maps.Map(document.getElementById('map'), {
+        draggable: true,
         zoom: 16,
         center: restaurant.latlng,
         scrollwheel: false
@@ -58,6 +59,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   const image = document.getElementById('restaurant-img');
   image.className = 'restaurant-img'
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  image.alt = DBHelper.imageAltForRestaurant(restaurant);
 
   const cuisine = document.getElementById('restaurant-cuisine');
   cuisine.innerHTML = restaurant.cuisine_type;
@@ -117,17 +119,27 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
  */
 createReviewHTML = (review) => {
   const li = document.createElement('li');
+  li.className = "review"
+  const header = document.createElement('div');
+  header.className = "reviewHeader mainContainer";
+  li.appendChild(header);
+
   const name = document.createElement('p');
+  name.className = "name reviewHeaderContent";
   name.innerHTML = review.name;
-  li.appendChild(name);
+  header.appendChild(name);
 
   const date = document.createElement('p');
+  date.className = "date reviewHeaderContent";
   date.innerHTML = review.date;
-  li.appendChild(date);
+  header.appendChild(date);
 
-  const rating = document.createElement('p');
+  const rating = document.createElement('div');
+  const boldRating = document.createElement('strong');
+  rating.className = "rating";
   rating.innerHTML = `Rating: ${review.rating}`;
-  li.appendChild(rating);
+  boldRating.appendChild(rating);
+  li.appendChild(boldRating);
 
   const comments = document.createElement('p');
   comments.innerHTML = review.comments;
