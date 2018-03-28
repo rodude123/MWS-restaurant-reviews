@@ -9,7 +9,7 @@ class DBHelper {
    */
   static get DATABASE_URL() {
     const port = 8006 // Change this to your server port
-    return `http://192.168.1.73:${port}/data/restaurants.json`;
+    return `/data/restaurants.json`;
   }
 
   /**
@@ -160,6 +160,13 @@ class DBHelper {
     return (`${restaurant.alt}`);
   }
 
+  /**
+   *
+   * Aria Label for the buttons
+   */
+   static buttonLabel(restaurant){
+    return restaurant.bLabel;
+   }
   /**
    * Map marker for a restaurant.
    */

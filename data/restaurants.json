@@ -6,6 +6,7 @@
     "photograph": "1.jpg",
     "alt":"People inside Mission Chinese Food",
     "address": "171 E Broadway, New York, NY 10002",
+    "bLabel": "View details for Mission Chinese Food",
     "latlng": {
       "lat": 40.713829,
       "lng": -73.989667
@@ -46,6 +47,7 @@
     "photograph": "2.jpg",
     "alt": "Pizza on a plate",
     "address": "919 Fulton St, Brooklyn, NY 11238",
+    "bLabel": "View details for Emily",
     "latlng": {
       "lat": 40.683555,
       "lng": -73.966393
@@ -86,6 +88,7 @@
     "photograph": "3.jpg",
     "alt":"Empty restaurant with orange looking tables and chairs angled more towards the left",
     "address": "1 E 32nd St, New York, NY 10016",
+    "bLabel": "View details for Kang Ho Dong Baekjeong",
     "latlng": {
       "lat": 40.747143,
       "lng": -73.985414
@@ -126,6 +129,7 @@
     "photograph": "4.jpg",
     "alt":"outside night photo of the restaurant",
     "address": "205 E Houston St, New York, NY 10002",
+    "bLabel": "View details for Katz's Delicatessen",
     "latlng": {
       "lat": 40.722216,
       "lng": -73.987501
@@ -166,6 +170,7 @@
     "photograph": "5.jpg",
     "alt":"People sitting inside Roberta's Pizza",
     "address": "261 Moore St, Brooklyn, NY 11206",
+    "bLabel": "View details for Roberta Pizza",
     "latlng": {
       "lat": 40.705089,
       "lng": -73.933585
@@ -206,6 +211,7 @@
     "photograph": "6.jpg",
     "alt":"American themed restaurant with people sitting inside",
     "address": "454 Van Brunt St, Brooklyn, NY 11231",
+    "bLabel": "View details for Hometown BBQ",
     "latlng": {
       "lat": 40.674925,
       "lng": -74.016162
@@ -246,6 +252,7 @@
     "photograph": "7.jpg",
     "alt":"Black and white photo of the outside of the Superiority Burger restaurant and with people inside",
     "address": "430 E 9th St, New York, NY 10009",
+    "bLabel": "View details for Superiority Burger",
     "latlng": {
       "lat": 40.727397,
       "lng": -73.983645
@@ -286,6 +293,7 @@
     "photograph": "8.jpg",
     "alt":"Close up view of the outside of the restaurant",
     "address": "131 Sullivan St, New York, NY 10012",
+    "bLabel": "View details for The Dutch",
     "latlng": {
       "lat": 40.726584,
       "lng": -74.002082
@@ -326,6 +334,7 @@
     "photograph": "9.jpg",
     "alt":"Slightly blured black and white photo of people sitting and eating",
     "address": "1209 Jackson Ave, Queens, NY 11101",
+    "bLabel": "View details for Mu Ramen",
     "latlng": {
       "lat": 40.743797,
       "lng": -73.950652
@@ -366,6 +375,7 @@
     "photograph": "10.jpg",
     "alt":"Empty restaurant with tables and chairs angled towards the left",
     "address": "5-48 49th Ave, Queens, NY 11101",
+    "bLabel": "View details for Casa Enrique",
     "latlng": {
       "lat": 40.743394,
       "lng": -73.954235
