@@ -18,7 +18,7 @@
       <h1><a href="/">Restaurant Reviews</a></h1>
     </nav>
     <!-- Beginning breadcrumb -->
-    <ul id="breadcrumb" >
+    <ul aria-label="Breadcrumb" id="breadcrumb" >
       <li><a href="/">Home</a></li>
     </ul>
     <!-- End breadcrumb -->
@@ -29,17 +29,17 @@
   <!-- Beginning main -->
   <main id="maincontent" class="mainContainer" style="width: 100%;">
     <!-- Beginning map -->
-    <section id="map-container" style="display: block;">
+    <section role="application" id="map-container" style="display: block;">
       <div id="map" style="overflow: hidden;"></div>
     </section>
     <!-- End map -->
     <!-- Beginning restaurant -->
     <section id="restaurant-container" style="display: block;">
-      <h1 id="restaurant-name"></h1>
+      <h2 tabindex="0" id="restaurant-name"></h2>
       <img id="restaurant-img">
       <p id="restaurant-cuisine"></p>
-      <p id="restaurant-address"></p>
-      <table id="restaurant-hours"></table>
+      <p tabindex="0" id="restaurant-address"></p>
+      <table tabindex="0" id="restaurant-hours"></table>
     </section>
     <!-- end restaurant -->
     <!-- Beginning reviews -->
@@ -49,7 +49,7 @@
     <!-- End reviews -->
     <!-- Beginning footer -->
     <footer id="footer">
-      Copyright (c) 2017 <a href="/"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
+      Copyright (c) 2017 <a href="/" id="footerLink"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
     </footer>
     <!-- End footer -->
   </main>
