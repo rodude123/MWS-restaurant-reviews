@@ -6,7 +6,7 @@ var map;
 window.initMap = () => {
   fetchRestaurantFromURL((error, restaurant) => {
     if (error) { // Got an error!
-      console.error(error);
+      console.log(error);
     } else {
       let isDraggable = $(document).width() > 1100 ? true : false;
       self.map = new google.maps.Map(document.getElementById('map'), {
@@ -37,7 +37,7 @@ fetchRestaurantFromURL = (callback) => {
     DBHelper.fetchRestaurantById(id, (error, restaurant) => {
       self.restaurant = restaurant;
       if (!restaurant) {
-        console.error(error);
+        console.log(error);
         return;
       }
       fillRestaurantHTML();
@@ -58,6 +58,11 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
 
   const image = document.getElementById('restaurant-img');
   image.className = 'restaurant-img'
+  if (restaurant.name == "Casa Enrique") 
+  {
+    image.src = "/img/10.jpg";
+    image.alt = "Empty restaurant with tables and chairs angled towards the left";
+  }
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
   image.alt = DBHelper.imageAltForRestaurant(restaurant);
 

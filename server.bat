@@ -1,1 +1,1 @@
-py -m http.server
+node server

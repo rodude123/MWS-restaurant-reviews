@@ -6,28 +6,7 @@ var urlsToCache = [
 'js/restaurant_info.js',
 'css/styles.css',
 'data/restaurants.json',
-'/index.html',
-'/restaurant.html?id=1',
-'/restaurant.html?id=2',
-'/restaurant.html?id=3',
-'/restaurant.html?id=4',
-'/restaurant.html?id=5',
-'/restaurant.html?id=6',
-'/restaurant.html?id=7',
-'/restaurant.html?id=8',
-'/restaurant.html?id=9',
-'/restaurant.html?id=10',
-'/restaurant.html',
-'img/1.jpg',
-'img/2.jpg',
-'img/3.jpg',
-'img/4.jpg',
-'img/5.jpg',
-'img/6.jpg',
-'img/7.jpg',
-'img/8.jpg',
-'img/9.jpg',
-'img/10.jpg',
+'/index.html'
 ];
 var cacheName = "rReviews-static-v1";
 self.addEventListener('install', function(event) 
@@ -72,7 +51,18 @@ self.addEventListener('fetch', function(event)
         return response || fetch(event.request).then(function(response) 
         {
           cache.put(event.request, response.clone());
+          if (response.status == 404) 
+          {
+            return new Response(`<div style="position:absolute;top:50%;left:50%;width:200px;height:200px;margin:-100px 0 0 -100px;font-size:1.5em;"><strong>Page not found 404</strong></div>`, {
+              headers: {"Content-Type": "text/html"}
+            });
+          }
           return response;
+        }).catch(function() 
+        {
+          return new Response(`<div style="position:absolute;top:50%;left:50%;width:200px;height:200px;margin:-100px 0 0 -100px;font-size:1.5em;"><strong>Page not found, you appear to be offline</strong></div>`, {
+              headers: {"Content-Type": "text/html"}
+            });
         });
       });
     })

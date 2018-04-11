@@ -13,19 +13,19 @@ if ('serviceWorker' in navigator)
 
 		if (reg.waiting) 
 		{
-			indexController._updateReady(reg.waiting);
+			_updateReady(reg.waiting);
 			return;
 		}
 
 		if (reg.installing) 
 		{
-	    	indexController._trackInstalling(reg.installing);
+	    	_trackInstalling(reg.installing);
 			return;
 		}
 
   		reg.addEventListener('updatefound', function() 
   		{
-	  		indexController._trackInstalling(reg.installing);
+	  		_trackInstalling(reg.installing);
 		});
 		// Ensure refresh is only called once.
 		// This works around a bug in "force update on reload".
@@ -58,5 +58,5 @@ function _updateReady(worker)
 {
 	//I need to add the update stuff in here
 	//Then do this:
-	//worker.postMessage({action: 'skipWaiting'});
+	worker.postMessage({action: 'skipWaiting'});
 }
