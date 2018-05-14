@@ -1,14 +1,13 @@
 var urlsToCache = [
 '/',
-'js/main.js',
+'js/idb.js',
 'js/indexController.js',
 'js/dbhelper.js',
 'js/restaurant_info.js',
 'css/styles.css',
-'data/restaurants.json',
 '/index.html'
 ];
-var cacheName = "rReviews-static-v1";
+var cacheName = "rReviews-static-v4";
 self.addEventListener('install', function(event) 
 {
   event.waitUntil

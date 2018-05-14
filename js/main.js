@@ -136,33 +136,87 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
  * Create restaurant HTML.
  */
 createRestaurantHTML = (restaurant) => {
-  const li = document.createElement('li');
+    var li = document.createElement('li');
 
-  const image = document.createElement('img');
-  image.className = 'restaurant-img';
-  image.src = DBHelper.imageUrlForRestaurant(restaurant);
-  image.alt = DBHelper.imageAltForRestaurant(restaurant);
-  li.append(image);
+    var name = document.createElement('h2');
+    name.innerHTML = restaurant.name;
 
-  const name = document.createElement('h2');
-  name.innerHTML = restaurant.name;
-  li.append(name);
+    var aLazy = document.createElement('a');
+    aLazy.className = 'progressive replace';
+    aLazy.href = DBHelper.imageUrlForRestaurant(restaurant) + '400.jpg';
+    //aLazy.href = '/imgRes/lazy.jpg';
 
-  const neighborhood = document.createElement('p');
-  neighborhood.innerHTML = restaurant.neighborhood;
-  li.append(neighborhood);
+    var image = document.createElement('img');
+    image.className = 'restaurant-img preview';
+    image.src = '/imgRes/lazy.jpg';
+    image.alt = 'Loading image';
 
-  const address = document.createElement('p');
-  address.innerHTML = restaurant.address;
-  li.append(address);
+    if (restaurant.name == "Mission Chinese Food") 
+    {
+        image.alt = "People sitting inside Mission Chinese Food";
+        image.arialabel = "People sitting inside Mission Chinese Food";
+    }
+    else if (restaurant.name == "Kang Ho Dong Baekjeong") 
+    {
+        image.alt = "Empty restaurant with orange looking tables and chairs angled more towards the left";
+        image.arialabel = "Empty restaurant with orange looking tables and chairs angled more towards the left";
+    }
+    else if (restaurant.name == "Katz's Delicatessen") 
+    {
+        image.alt = "Outside night photo of the restaurant";
+        image.arialabel = "Outside night photo of the restaurant";
+    } 
+    else if (restaurant.name == "Roberta's Pizza") 
+    {
+        image.alt = "People sitting inside Roberta's Pizza";
+        image.arialabel = "People sitting inside Roberta's Pizza";
+    } 
+    else if (restaurant.name == "Hometown BBQ") 
+    {
+        image.alt = "American themed restaurant with people sitting inside";
+        image.arialabel = "American themed restaurant with people sitting inside";
+    } 
+    else if (restaurant.name == "Superiority Burger") 
+    {
+        image.alt = "Black and white photo of the outside of the Superiority Burger restaurant and with people inside";
+        image.arialabel = "Black and white photo of the outside of the Superiority Burger restaurant and with people inside";
+    } 
+    else if (restaurant.name == "The Dutch") 
+    {
+        image.alt = "Close up view of the outside of the restaurant";
+        image.arialabel = "Close up view of the outside of the restaurant";
+    }
+    else if (restaurant.name == "Mu Ramen") 
+    {
+        image.alt = "Slightly blured black and white photo of people sitting and eating";
+        image.arialabel = "Slightly blured black and white photo of people sitting and eating";
+    } 
+    else if (restaurant.name == "Casa Enrique") 
+    {
+        aLazy.href = "/imgRes/10-400.jpg";
+        image.alt = "Empty restaurant with tables and chairs angled towards the left";
+        image.arialabel = "Empty restaurant with tables and chairs angled towards the left";
+    }
 
-  const more = document.createElement('a');
-  more.innerHTML = 'View Details';
-  more.href = DBHelper.urlForRestaurant(restaurant);
-  more.class = "restaurant";
-  more.setAttribute('aria-label', DBHelper.buttonLabel(restaurant));
-  li.append(more);
-  return li;
+    aLazy.append(image);
+    li.append(aLazy);
+    li.append(name);
+
+    const neighborhood = document.createElement('p');
+    neighborhood.innerHTML = restaurant.neighborhood;
+    li.append(neighborhood);
+
+    const address = document.createElement('p');
+    address.innerHTML = restaurant.address;
+    li.append(address);
+
+    const more = document.createElement('a');
+    more.innerHTML = 'View Details';
+    more.href = DBHelper.urlForRestaurant(restaurant);
+    more.className = "restaurant";
+    more.setAttribute('aria-label', DBHelper.buttonLabel(restaurant));
+    li.append(more);
+    return li;
 }
 
 /**

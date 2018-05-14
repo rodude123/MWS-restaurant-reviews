@@ -1,21 +1,27 @@
 let restaurant;
 var map;
+let c1 = 0;
+let c2 = 0;
+let c3 = 0;
+let c4 = 0;
 /**
  * Initialize Google map, called from HTML.
  */
 window.initMap = () => {
   fetchRestaurantFromURL((error, restaurant) => {
     if (error) { // Got an error!
-      console.log(error);
+      console.error(error);
     } else {
-      let isDraggable = $(document).width() > 1100 ? true : false;
       self.map = new google.maps.Map(document.getElementById('map'), {
-        draggable: true,
         zoom: 16,
         center: restaurant.latlng,
         scrollwheel: false
       });
-      fillBreadcrumb();
+      if (c1 == 0) 
+      {
+        fillBreadcrumb();
+        c1 = 1;
+      }
       DBHelper.mapMarkerForRestaurant(self.restaurant, self.map);
     }
   });
@@ -37,10 +43,14 @@ fetchRestaurantFromURL = (callback) => {
     DBHelper.fetchRestaurantById(id, (error, restaurant) => {
       self.restaurant = restaurant;
       if (!restaurant) {
-        console.log(error);
+        console.error(error);
         return;
       }
-      fillRestaurantHTML();
+      if (c2 == 0) 
+      {
+        fillRestaurantHTML();
+        c2 = 1;
+      }
       callback(null, restaurant)
     });
   }
@@ -50,31 +60,86 @@ fetchRestaurantFromURL = (callback) => {
  * Create restaurant HTML and add it to the webpage
  */
 fillRestaurantHTML = (restaurant = self.restaurant) => {
-  const name = document.getElementById('restaurant-name');
-  name.innerHTML = restaurant.name;
+    const name = document.getElementById('restaurant-name');
+    name.innerHTML = restaurant.name;
 
-  const address = document.getElementById('restaurant-address');
-  address.innerHTML = restaurant.address;
+    const address = document.getElementById('restaurant-address');
+    address.innerHTML = restaurant.address;
 
-  const image = document.getElementById('restaurant-img');
-  image.className = 'restaurant-img'
-  if (restaurant.name == "Casa Enrique") 
-  {
-    image.src = "/img/10.jpg";
-    image.alt = "Empty restaurant with tables and chairs angled towards the left";
-  }
-  image.src = DBHelper.imageUrlForRestaurant(restaurant);
-  image.alt = DBHelper.imageAltForRestaurant(restaurant);
+    const aLazy = document.getElementById('aLazy');
+    aLazy.href = DBHelper.imageUrlForRestaurant(restaurant) + '800.jpg';
+    aLazy.setAttribute("data-srcset", `${DBHelper.imageUrlForRestaurant(restaurant)}300.jpg 400w, ${DBHelper.imageUrlForRestaurant(restaurant)}400.jpg 600w, ${DBHelper.imageUrlForRestaurant(restaurant)}600.jpg 800w, ${DBHelper.imageUrlForRestaurant(restaurant)}800.jpg 1200w`)
+
+    const image = document.getElementById('restaurant-img');
+    image.className = 'restaurant-img preview';
+    if (restaurant.name == "Mission Chinese Food") 
+    {
+        image.alt = "People sitting inside Mission Chinese Food";
+        image.arialabel = "People sitting inside Mission Chinese Food";
+    }
+    else if (restaurant.name == "Kang Ho Dong Baekjeong") 
+    {
+        image.alt = "Empty restaurant with orange looking tables and chairs angled more towards the left";
+        image.arialabel = "Empty restaurant with orange looking tables and chairs angled more towards the left";
+    }
+    else if (restaurant.name == "Katz's Delicatessen") 
+    {
+        image.alt = "Outside night photo of the restaurant";
+        image.arialabel = "Outside night photo of the restaurant";
+    } 
+    else if (restaurant.name == "Roberta's Pizza") 
+    {
+        image.alt = "People sitting inside Roberta's Pizza";
+        image.arialabel = "People sitting inside Roberta's Pizza";
+    } 
+    else if (restaurant.name == "Hometown BBQ") 
+    {
+        image.alt = "American themed restaurant with people sitting inside";
+        image.arialabel = "American themed restaurant with people sitting inside";
+    } 
+    else if (restaurant.name == "Superiority Burger") 
+    {
+        image.alt = "Black and white photo of the outside of the Superiority Burger restaurant and with people inside";
+        image.arialabel = "Black and white photo of the outside of the Superiority Burger restaurant and with people inside";
+    } 
+    else if (restaurant.name == "The Dutch") 
+    {
+        image.alt = "Close up view of the outside of the restaurant";
+        image.arialabel = "Close up view of the outside of the restaurant";
+    }
+    else if (restaurant.name == "Mu Ramen") 
+    {
+        image.alt = "Slightly blured black and white photo of people sitting and eating";
+        image.arialabel = "Slightly blured black and white photo of people sitting and eating";
+    } 
+    else if (restaurant.name == "Casa Enrique") 
+    {
+        aLazy.href = "/imgRes/10-400.jpg";
+        image.alt = "Empty restaurant with tables and chairs angled towards the left";
+        image.arialabel = "Empty restaurant with tables and chairs angled towards the left";
+    }
+
 
   const cuisine = document.getElementById('restaurant-cuisine');
   cuisine.innerHTML = restaurant.cuisine_type;
 
   // fill operating hours
-  if (restaurant.operating_hours) {
-    fillRestaurantHoursHTML();
+  if (restaurant.operating_hours) 
+  {
+    if (c3 == 0) 
+    {
+      fillRestaurantHoursHTML();
+      c3 = 1;
+    }
+    
   }
   // fill reviews
-  fillReviewsHTML();
+  if (c4 == 0) 
+  {
+    fillReviewsHTML();
+    c4 = 1;
+  }
+  
 }
 
 /**
